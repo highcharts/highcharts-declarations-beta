@@ -1,0 +1,26 @@
+{
+  "name": "highcharts-typescript-beta",
+  "version": "1.0.0",
+  "description": "Highcharts TypeScript Beta",
+  "main": "index.d.ts",
+  "scripts": {
+    "test": "tsc && rm -R tmp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/highcharts/highcharts-typescript-beta.git"
+  },
+  "keywords": [
+    "Highcharts",
+    "TypeScript"
+  ],
+  "author": "Highsoft AS",
+  "license": "SEE LICENSE IN https://www.highcharts.com/license",
+  "bugs": {
+    "url": "https://github.com/highcharts/highcharts-typescript-beta/issues"
+  },
+  "homepage": "https://github.com/highcharts/highcharts-typescript-beta#readme",
+  "dependencies": {
+    "highcharts": "^6.1.4"
+  }
+}
