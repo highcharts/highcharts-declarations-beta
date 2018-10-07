@@ -4,6 +4,7 @@
   "description": "Highcharts TypeScript Beta",
   "main": "index.d.ts",
   "scripts": {
+    "install": "node install",
     "test": "tsc && rm -R tmp"
   },
   "repository": {
