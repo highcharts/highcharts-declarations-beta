@@ -1,9 +1,10 @@
 
 # Type definitions (beta) for Highcharts v6
 
-These declaration files are in a beta state and incomplete. Even though they
-help in developing Highcharts-based solutions, in some circumstances a partial
-cast to the `any` type is necessary because of missing declarations.
+These declaration files are in a beta state and incomplete. They are not
+necessary for Highcharts v7. Even though the type definitions help in developing
+Highcharts-based solutions in TypeScript, in some circumstances a partial cast
+to the `any` type is necessary because of missing declarations.
 
 This beta contains declarations for the following imports:
 
@@ -14,6 +15,29 @@ This beta contains declarations for the following imports:
 - highcharts/modules/offline-exporting
 - highcharts/modules/series-label
 - highcharts/modules/vector
+
+
+
+## Installation & Deinstallation
+
+- To install or update this package, use the following command:
+  ```sh
+  npm install https://github.com/highcharts/highcharts-typescript-beta.git
+  ```
+  **Note:** This will add declaration files to the highcharts module.
+
+- To uninstall this package, use the following command:
+  ```sh
+  npm uninstall highcharts-typescript-beta
+  ```
+  **Note:** This will remove declaration files in the highcharts module.
+
+
+
+## Configuration
+
+There is no extra configuration required. TypeScript will automatically detect
+the declaration files in the highcharts module.
 
 
 
