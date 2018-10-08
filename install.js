@@ -19,7 +19,7 @@ function install(definitionPath, definitionPattern, highchartsPath) {
                 fs.writeFileSync(
                     fileCopy,
                     fs.readFileSync(file, ''),
-                    ''
+                    { encoding: '', flag: 'w' }
                 );
                 console.info(
                     'Created',
