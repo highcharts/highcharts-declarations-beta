@@ -5,15 +5,15 @@
 const fs = require('fs');
 const path = require('path');
 
-export const definitionPath = process.cwd();
-export const definitionPattern = '.d.ts';
-export const highchartsPath = path.resolve(definitionPath, '../highcharts');
+const definitionPath = process.cwd();
+const definitionPattern = '.d.ts';
+const highchartsPath = path.resolve(definitionPath, '../highcharts');
 
-export function endsWith(str, pattern) {
+function endsWith(str, pattern) {
     return (str.lastIndexOf(pattern) === (str.length - pattern.length));
 }
 
-export function getFiles(directoryPath, endPattern) {
+function getFiles(directoryPath, endPattern) {
     const files = [];
     let itemPath = [],
         itemStat = null;
@@ -31,16 +31,28 @@ export function getFiles(directoryPath, endPattern) {
     return files;
 }
 
-export function makeDirectory(directoryPath) {
+function isNpmMode(definitionPath, highchartsPath) {
+    return (
+        endsWith(definitionPath, '/node_modules/highcharts-typescript-beta') ||
+        endsWith(highchartsPath, '/node_modules/highcharts')
+    );
+}
+
+function makeDirectory(directoryPath) {
     if (!fs.existsSync(directoryPath)) {
         makeDirectory(path.dirname(directoryPath));
         fs.mkdirSync(directoryPath);
     }
 }
 
-export function isNpmMode(definitionPath, highchartsPath) {
-    return (
-        endsWith(definitionPath, '/node_modules/highcharts-typescript-beta') ||
-        endsWith(highchartsPath, '/node_modules/highcharts')
-    );
+module.exports = {
+    // constants
+    definitionPath: definitionPath,
+    definitionPattern: definitionPattern,
+    highchartsPath: highchartsPath,
+    // functions
+    endsWith: endsWith,
+    getFiles: getFiles,
+    isNpmMode: isNpmMode,
+    makeDirectory: makeDirectory
 }

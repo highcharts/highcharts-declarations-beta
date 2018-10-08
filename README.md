@@ -13,7 +13,7 @@ This beta contains declarations for the following imports:
 - ~highcharts/modules/exporting~
 - ~highcharts/modules/offline-exporting~
 - ~highcharts/modules/series-label~
-- ~highcharts/modules/vector~
+- highcharts/modules/vector
 
 
 
