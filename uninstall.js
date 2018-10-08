@@ -25,7 +25,10 @@ function uninstall(definitionPath, definitionPattern, highchartsPath) {
                 if (fileCopyStat.size === fileStat.size) {
                     fs.unlinkSync(file);
                 }
-                console.info('Deleted ', fileCopy);
+                console.info(
+                    'Deleted ',
+                    fileCopy.substr(highchartsPath.length + 1)
+                );
             });
     }
     catch (err) {

@@ -21,7 +21,10 @@ function install(definitionPath, definitionPattern, highchartsPath) {
                     fs.readFileSync(file, ''),
                     ''
                 );
-                console.info('Created ', fileCopy);
+                console.info(
+                    'Created ',
+                    fileCopy.substr(highchartsPath.length + 1)
+                );
             });
     } catch (err) {
         console.error(err);
