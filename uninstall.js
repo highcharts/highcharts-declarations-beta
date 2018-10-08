@@ -6,31 +6,35 @@ const fs = require('fs');
 const path = require('path');
 const library = require('./library');
 
-function install(definitionPath, definitionPattern, highchartsPath) {
+function uninstall(definitionPath, definitionPattern, highchartsPath) {
     try {
-        let fileCopy;
+        let fileCopy,
+            fileCopyStat,
+            fileStat;
         library
             .getFiles(definitionPath, definitionPattern)
             .forEach(file => {
+                fileStat = fs.statSync(file);
                 fileCopy = path.resolve(
                     highchartsPath, file.substr(definitionPath.length + 1)
                 );
-                library.makeDirectory(path.dirname(fileCopy));
-                fs.writeFileSync(
-                    fileCopy,
-                    fs.readFileSync(file, ''),
-                    ''
-                );
-                console.info('Created ', fileCopy);
+                if (!fs.existsSync(fileCopy)) {
+                    return;
+                }
+                fileCopyStat = fs.statSync(fileCopy);
+                if (fileCopyStat.size === fileStat.size) {
+                    fs.unlinkSync(file);
+                }
+                console.info('Deleted ', fileCopy);
             });
-    } catch (err) {
+    }
+    catch (err) {
         console.error(err);
-        process.exit(1);
     }
 }
 
 if (library.isNpmMode(library.definitionPath, library.highchartsPath)) {
-    install(
+    uninstall(
         library.definitionPath,
         library.definitionPattern,
         library.highchartsPath

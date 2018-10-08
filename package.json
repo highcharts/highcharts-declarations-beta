@@ -5,7 +5,7 @@
   "main": "index.d.ts",
   "scripts": {
     "install": "node install",
-    "test": "tsc && rm -R tmp"
+    "uninstall": "node uninstall"
   },
   "repository": {
     "type": "git",
