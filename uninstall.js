@@ -14,17 +14,18 @@ function uninstall(definitionPath, definitionPattern, highchartsPath) {
         library
             .getFiles(definitionPath, definitionPattern)
             .forEach(file => {
-                fileStat = fs.statSync(file);
                 fileCopy = path.resolve(
                     highchartsPath, file.substr(definitionPath.length + 1)
                 );
                 if (!fs.existsSync(fileCopy)) {
                     return;
                 }
+                fileStat = fs.statSync(file);
                 fileCopyStat = fs.statSync(fileCopy);
-                if (fileCopyStat.size === fileStat.size) {
-                    fs.unlinkSync(file);
+                if (fileCopyStat.size !== fileStat.size) {
+                    return;
                 }
+                fs.unlinkSync(fileCopy);
                 console.info(
                     'Deleted',
                     fileCopy.substr(highchartsPath.length + 1)
