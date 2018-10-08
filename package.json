@@ -1,6 +1,6 @@
 {
   "name": "highcharts-typescript-beta",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Highcharts TypeScript Beta",
   "main": "index.d.ts",
   "scripts": {
