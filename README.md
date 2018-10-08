@@ -8,11 +8,11 @@ cast to the `any` type is necessary because of missing declarations.
 This beta contains declarations for the following imports:
 
 - highcharts
-- ~highcharts/modules/accessibility~
-- ~highcharts/modules/export-data~
-- ~highcharts/modules/exporting~
-- ~highcharts/modules/offline-exporting~
-- ~highcharts/modules/series-label~
+- highcharts/modules/accessibility
+- highcharts/modules/export-data
+- highcharts/modules/exporting
+- highcharts/modules/offline-exporting
+- highcharts/modules/series-label
 - highcharts/modules/vector
 
 
