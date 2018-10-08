@@ -1,5 +1,5 @@
 
-# Type definitions (beta) for Highcharts v6
+# TypeScript definitions (beta) for Highcharts v6
 
 These declaration files are in a beta state and incomplete. They are not
 necessary for Highcharts v7. Even though the type definitions help in developing
