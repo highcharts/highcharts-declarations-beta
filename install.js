@@ -22,7 +22,7 @@ function install(definitionPath, definitionPattern, highchartsPath) {
                     ''
                 );
                 console.info(
-                    'Created ',
+                    'Created',
                     fileCopy.substr(highchartsPath.length + 1)
                 );
             });

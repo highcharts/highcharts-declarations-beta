@@ -26,7 +26,7 @@ function uninstall(definitionPath, definitionPattern, highchartsPath) {
                     fs.unlinkSync(file);
                 }
                 console.info(
-                    'Deleted ',
+                    'Deleted',
                     fileCopy.substr(highchartsPath.length + 1)
                 );
             });
