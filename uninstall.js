@@ -8,29 +8,69 @@ const library = require('./library');
 
 function uninstall(definitionPath, definitionPattern, highchartsPath) {
     try {
-        let fileCopy,
-            fileCopyStat,
-            fileStat;
+
+        const packagePath = path.join(highchartsPath, 'package.json');
+        if (!fs.existsSync(packagePath)) {
+            throw new Error(
+                'Highcharts v6 not found.'
+            );
+        }
+
+        const packageJSON = JSON.parse(fs.readFileSync(packagePath));
+        if (!packageJSON.version ||
+            !packageJSON.version.startsWith('6.')
+        ) {
+            throw new Error(
+                'Highcharts Declarations (Beta) requires Highcharts v6.'
+            );
+        }
+
+        console.info(
+            'Remove declarations from Highcharts v' + packageJSON.version +
+            ' package...'
+        );
+        let copyPath,
+            copyStat,
+            fileStat,
+            mainDeleted = false;
         library
             .getFiles(definitionPath, definitionPattern)
-            .forEach(file => {
-                fileCopy = path.resolve(
-                    highchartsPath, file.substr(definitionPath.length + 1)
+            .forEach(filePath => {
+                copyPath = path.resolve(
+                    highchartsPath, filePath.substr(definitionPath.length + 1)
                 );
-                if (!fs.existsSync(fileCopy)) {
+                if (!fs.existsSync(copyPath)) {
                     return;
                 }
-                fileStat = fs.statSync(file);
-                fileCopyStat = fs.statSync(fileCopy);
-                if (fileCopyStat.size !== fileStat.size) {
+                fileStat = fs.statSync(filePath);
+                copyStat = fs.statSync(copyPath);
+                if (copyStat.size !== fileStat.size) {
                     return;
                 }
-                fs.unlinkSync(fileCopy);
+                fs.unlinkSync(copyPath);
+                mainDeleted = (
+                    mainDeleted ||
+                    library.endsWith(copyPath, 'highcharts.d.ts')
+                );
                 console.info(
                     'Deleted',
-                    fileCopy.substr(highchartsPath.length + 1)
+                    path.relative(library.targetPath, copyPath)
                 );
             });
+
+        if (mainDeleted &&
+            packageJSON.types
+        ) {
+            delete packageJSON.types;
+            fs.writeFileSync(
+                packagePath,
+                JSON.stringify(packageJSON, undefined, '  ')
+            );
+            console.info(
+                'Modified',
+                path.relative(library.targetPath, copyPath)
+            );
+        }
     }
     catch (err) {
         console.error(err);

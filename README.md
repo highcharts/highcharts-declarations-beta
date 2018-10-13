@@ -1,12 +1,12 @@
 
-# TypeScript definitions (beta) for Highcharts v6
+# TypeScript Declarations (Beta) for Highcharts v6
 
 These declaration files are in a beta state and incomplete. They are not
 necessary for Highcharts v7. Even though the type definitions help in developing
 Highcharts-based solutions in TypeScript, in some circumstances a partial cast
 to the `any` type is necessary because of missing declarations.
 
-This beta contains declarations for the following imports:
+This beta version contains declarations for the following imports:
 
 - highcharts
 - highcharts/modules/accessibility
@@ -18,13 +18,14 @@ This beta contains declarations for the following imports:
 
 
 
-## Installation & Deinstallation
+## Installation, Updates & Deinstallation
 
 - To install or update this package, use the following command:
   ```sh
   npm install https://github.com/highcharts/highcharts-typescript-beta.git
   ```
-  **Note:** This will add declaration files to the highcharts module.
+  **Note:** This will add declaration files to the highcharts module. If you
+  install a new version of Highcharts v6, you have to update this package too.
 
 - To uninstall this package, use the following command:
   ```sh

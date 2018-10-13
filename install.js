@@ -8,24 +8,57 @@ const library = require('./library');
 
 function install(definitionPath, definitionPattern, highchartsPath) {
     try {
-        let fileCopy;
+
+        const packagePath = path.join(highchartsPath, 'package.json');
+        if (!fs.existsSync(packagePath)) {
+            throw new Error(
+                'Highcharts v6 not found.'
+            );
+        }
+
+        const packageJSON = JSON.parse(fs.readFileSync(packagePath));
+        if (!packageJSON.version ||
+            !packageJSON.version.startsWith('6.')
+        ) {
+            throw new Error(
+                'Highcharts Declarations (Beta) requires Highcharts v6.'
+            );
+        }
+
+        console.info(
+            'Install declarations into Highcharts v' + packageJSON.version +
+            ' package...'
+        );
+        let copyPath;
         library
             .getFiles(definitionPath, definitionPattern)
-            .forEach(file => {
-                fileCopy = path.resolve(
-                    highchartsPath, file.substr(definitionPath.length + 1)
+            .forEach(filePath => {
+                copyPath = path.join(
+                    highchartsPath, filePath.substr(definitionPath.length + 1)
                 );
-                library.makeDirectory(path.dirname(fileCopy));
+                library.makeDirectory(path.dirname(copyPath));
                 fs.writeFileSync(
-                    fileCopy,
-                    fs.readFileSync(file, ''),
+                    copyPath,
+                    fs.readFileSync(filePath, ''),
                     { encoding: '', flag: 'w' }
                 );
                 console.info(
                     'Created',
-                    fileCopy.substr(highchartsPath.length + 1)
+                    path.relative(library.targetPath, copyPath)
                 );
             });
+
+        if (!packageJSON.types) {
+            packageJSON.types = 'highcharts.d.ts';
+            fs.writeFileSync(
+                packagePath,
+                JSON.stringify(packageJSON, undefined, '  ')
+            );
+            console.info(
+                'Modified',
+                path.relative(library.targetPath, copyPath)
+            );
+        }
     } catch (err) {
         console.error(err);
         process.exit(1);

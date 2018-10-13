@@ -7,7 +7,9 @@ const path = require('path');
 
 const definitionPath = process.cwd();
 const definitionPattern = '.d.ts';
-const highchartsPath = path.resolve(definitionPath, '../highcharts');
+const targetPath = process.env.INIT_CWD;
+const nodeModulesPath = path.join(targetPath, 'node_modules');
+const highchartsPath = path.join(nodeModulesPath, 'highcharts');
 
 function endsWith(str, pattern) {
     return (str.lastIndexOf(pattern) === (str.length - pattern.length));
@@ -33,8 +35,9 @@ function getFiles(directoryPath, endPattern) {
 
 function isNpmMode(definitionPath, highchartsPath) {
     return (
-        endsWith(definitionPath, '/node_modules/highcharts-typescript-beta') ||
-        endsWith(highchartsPath, '/node_modules/highcharts')
+        definitionPath &&
+        highchartsPath &&
+        definitionPath !== highchartsPath
     );
 }
 
@@ -50,6 +53,8 @@ module.exports = {
     definitionPath: definitionPath,
     definitionPattern: definitionPattern,
     highchartsPath: highchartsPath,
+    nodeModulesPath: nodeModulesPath,
+    targetPath: targetPath,
     // functions
     endsWith: endsWith,
     getFiles: getFiles,

@@ -1,7 +1,7 @@
 {
-  "name": "highcharts-typescript-beta",
-  "version": "0.1.0",
-  "description": "TypeScript definitions (beta) for Highcharts v6",
+  "name": "highcharts-declarations-beta",
+  "version": "0.1.1",
+  "description": "TypeScript Declarations (Beta) for Highcharts v6",
   "main": "index.d.ts",
   "scripts": {
     "install": "node install",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/highcharts/highcharts-typescript-beta.git"
+    "url": "git+https://github.com/highcharts/highcharts-declarations-beta.git"
   },
   "keywords": [
     "Highcharts",
@@ -18,9 +18,9 @@
   "author": "Highsoft AS",
   "license": "SEE LICENSE IN https://www.highcharts.com/license",
   "bugs": {
-    "url": "https://github.com/highcharts/highcharts-typescript-beta/issues"
+    "url": "https://github.com/highcharts/highcharts-declarations-beta/issues"
   },
-  "homepage": "https://github.com/highcharts/highcharts-typescript-beta#readme",
+  "homepage": "https://github.com/highcharts/highcharts-declarations-beta#readme",
   "dependencies": {
     "highcharts": "^6.1.4"
   }
