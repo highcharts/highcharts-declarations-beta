@@ -1,6 +1,6 @@
 {
   "name": "highcharts-declarations-beta",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "TypeScript Declarations (Beta) for Highcharts v6",
   "main": "index.d.ts",
   "scripts": {
