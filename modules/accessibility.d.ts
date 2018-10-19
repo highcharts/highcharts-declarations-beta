@@ -1,3 +1,4 @@
+import * as globals from "../globals";
 import * as Highcharts from "../highcharts";
 /**
  * Adds the module to the imported Highcharts namespace.
@@ -5,12 +6,7 @@ import * as Highcharts from "../highcharts";
  * @param highcharts
  *        The imported Highcharts namespace to extend.
  */
-declare function factory(highcharts: typeof Highcharts): void;
-/**
- * The Highcharts object is the placeholder for all other members, and various
- * utility functions. The most important member of the namespace would be the
- * chart constructor.
- */
+export function factory(highcharts: typeof Highcharts): void;
 declare module "../highcharts" {
     interface Chart {
         /**
@@ -24,7 +20,7 @@ declare module "../highcharts" {
          *
          * @return The formatted string.
          */
-        langFormat(langKey: string, context: Highcharts.Dictionary<any>): string;
+        langFormat(langKey: string, context: Dictionary<any>): string;
     }
     /**
      * i18n formatting function. Extends Highcharts.format() functionality by
@@ -91,6 +87,6 @@ declare module "../highcharts" {
      *
      * @return The formatted string.
      */
-    function i18nFormat(formatString: string, context: Highcharts.Dictionary<any>, time: Highcharts.Time): string;
+    function i18nFormat(formatString: string, context: Dictionary<any>, time: Time): string;
 }
-export = factory;
+export default factory;

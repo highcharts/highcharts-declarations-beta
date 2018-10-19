@@ -1,3 +1,4 @@
+import * as globals from "../globals";
 import * as Highcharts from "../highcharts";
 /**
  * Adds the module to the imported Highcharts namespace.
@@ -5,60 +6,8 @@ import * as Highcharts from "../highcharts";
  * @param highcharts
  *        The imported Highcharts namespace to extend.
  */
-declare function factory(highcharts: typeof Highcharts): void;
-/**
- * The Highcharts object is the placeholder for all other members, and various
- * utility functions. The most important member of the namespace would be the
- * chart constructor.
- */
+export function factory(highcharts: typeof Highcharts): void;
 declare module "../highcharts" {
-    /**
-     * Download options for offline exporting.
-     */
-    type OfflineExportingDownloadOptionsObject = {
-        /**
-         * Name of resulting downloaded file without extension.
-         */
-        filename?: string;
-        /**
-         * URL pointing to location of dependency scripts to download on demand.
-         * By default, the module will load these file from our server. Internet
-         * Explorer requires the canvg library in order to export to PNG and to
-         * export charts with embedded images. PDF export also requires the
-         * jsPDF and svg2pdf for all browsers.
-         */
-        libURL?: string;
-        /**
-         * Scaling factor of downloaded image compared to source
-         */
-        scale?: number;
-        /**
-         * File type of resulting download
-         */
-        type?: string;
-    };
-    type OfflineExportingOptionsObject = {
-        /**
-         * The file name for the export without extension.
-         */
-        filename?: string;
-        /**
-         * The pixel height of the source (in-page) chart.
-         */
-        sourceHeight?: number;
-        /**
-         * The pixel width of the source (in-page) chart.
-         */
-        sourceWidth?: number;
-        /**
-         * The MIME type of the converted image.
-         */
-        type?: string;
-        /**
-         * The width of the PNG or JPG image generated on the server.
-         */
-        width?: number;
-    };
     interface Chart {
         /**
          * Exporting and offline-exporting modules required. Export a chart to
@@ -74,7 +23,24 @@ declare module "../highcharts" {
          *        different background color can be added here, or `dataLabels`
          *        for export only.
          */
-        exportChartLocal(exportingOptions: Highcharts.OfflineExportingOptionsObject, chartOptions: Highcharts.Options): void;
+        exportChartLocal(exportingOptions: OfflineExportingOptionsObject, chartOptions: Options): void;
+    }
+    /**
+     * Download options for offline exporting.
+     */
+    interface OfflineExportingOptionsObject extends ExportingOptionsObject {
+        /**
+         * URL pointing to location of dependency scripts to download on demand.
+         * By default, the module will load these file from our server. Internet
+         * Explorer requires the canvg library in order to export to PNG and to
+         * export charts with embedded images. PDF export also requires the
+         * jsPDF and svg2pdf for all browsers.
+         */
+        libURL?: string;
+        /**
+         * Scaling factor of downloaded image compared to source.
+         */
+        scale?: number;
     }
     /**
      * Get data URL to an image of an SVG and call download on it options
@@ -92,18 +58,10 @@ declare module "../highcharts" {
      * on demand. Default is the exporting.libURL option of the global
      * Highcharts options pointing to our server.
      *
-     * @param svg
      *
      *
-     * @param options
-     *
-     *
-     * @param failCallback
-     *
-     *
-     * @param successCallback
      *
      */
-    function downloadSVGLocal(svg: string, options: Highcharts.OfflineExportingDownloadOptionsObject, failCallback: () => void, successCallback: () => void): void;
+    function downloadSVGLocal(svg: string, options: OfflineExportingOptionsObject, failCallback: () => void, successCallback: () => void): void;
 }
-export = factory;
+export default factory;

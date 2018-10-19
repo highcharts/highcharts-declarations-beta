@@ -1,3 +1,4 @@
+import * as globals from "../globals";
 import * as Highcharts from "../highcharts.src";
 /**
  * Adds the module to the imported Highcharts namespace.
@@ -5,43 +6,8 @@ import * as Highcharts from "../highcharts.src";
  * @param highcharts
  *        The imported Highcharts namespace to extend.
  */
-declare function factory(highcharts: typeof Highcharts): void;
-/**
- * The Highcharts object is the placeholder for all other members, and various
- * utility functions. The most important member of the namespace would be the
- * chart constructor.
- */
+export function factory(highcharts: typeof Highcharts): void;
 declare module "../highcharts.src" {
-    interface AjaxSettings {
-        /**
-         * The payload to send.
-         */
-        data: object;
-        /**
-         * The data type expected.
-         */
-        dataType: ("json"|"octet"|"text"|"xml");
-        /**
-         * Function to call on error.
-         */
-        error: () => void;
-        /**
-         * The headers; keyed on header name.
-         */
-        headers: object;
-        /**
-         * Function to call on success.
-         */
-        success: () => void;
-        /**
-         * The verb to use.
-         */
-        type: ("delete"|"get"|"post"|"update");
-        /**
-         * The URL to call.
-         */
-        url: string;
-    }
     interface Chart {
         /**
          * Export-data module required. Returns the current chart data as a CSV
@@ -96,13 +62,6 @@ declare module "../highcharts.src" {
         viewData(): void;
     }
     /**
-     * Perform an Ajax call.
-     *
-     * @param attr
-     *        The Ajax settings to use.
-     */
-    function ajax(attr: AjaxSettings): void;
-    /**
      * HTML encode some characters vulnerable for XSS.
      *
      * @param html
@@ -112,4 +71,4 @@ declare module "../highcharts.src" {
      */
     function htmlencode(html: string): string;
 }
-export = factory;
+export default factory;
