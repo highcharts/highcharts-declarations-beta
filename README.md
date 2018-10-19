@@ -22,7 +22,7 @@ This beta version contains declarations for the following imports:
 
 - To install or update this package, use the following command:
   ```sh
-  npm install https://github.com/highcharts/highcharts-declarations-beta.git
+  npm install https://github.com/highcharts/highcharts-declarations-beta
   ```
   **Note:** This will add declaration files to the highcharts module. If you
   install a new version of Highcharts v6, you have to update this package too.
@@ -33,6 +33,10 @@ This beta version contains declarations for the following imports:
   ```
   **Note:** This will remove declaration files in the highcharts module.
 
+- To install a specific version (for example v0.2.0), use the following command:
+  ```sh
+  npm install https://github.com/highcharts/highcharts-declarations-beta#v0.2.0
+  ```
 
 
 ## Configuration

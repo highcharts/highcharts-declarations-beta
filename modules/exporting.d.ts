@@ -1,3 +1,4 @@
+import * as globals from "../globals";
 import * as Highcharts from "../highcharts";
 /**
  * Adds the module to the imported Highcharts namespace.
@@ -5,12 +6,7 @@ import * as Highcharts from "../highcharts";
  * @param highcharts
  *        The imported Highcharts namespace to extend.
  */
-declare function factory(highcharts: typeof Highcharts): void;
-/**
- * The Highcharts object is the placeholder for all other members, and various
- * utility functions. The most important member of the namespace would be the
- * chart constructor.
- */
+export function factory(highcharts: typeof Highcharts): void;
 declare module "../highcharts" {
     interface Chart {
         /**
@@ -27,7 +23,7 @@ declare module "../highcharts" {
          *
          * @see https://api.highcharts.com/class-reference/Highcharts.Chart#exportChart
          */
-        exportChart(exportingOptions: Highcharts.ExportingOptionsObject, chartOptions: Highcharts.Options): void;
+        exportChart(exportingOptions: ExportingOptionsObject, chartOptions: Options): void;
         /**
          * Return the unfiltered innerHTML of the chart container. Used as hook
          * for plugins. In styled mode, it also takes care of inlining CSS style
@@ -50,7 +46,7 @@ declare module "../highcharts" {
          *
          * @fires Highcharts.Chart#getSVG
          */
-        getSVG(chartOptions: Highcharts.Options): string;
+        getSVG(chartOptions: Options): string;
         /**
          * Exporting module required. Clears away other elements in the page and
          * prints the chart as it is displayed. By default, when the exporting
@@ -92,4 +88,4 @@ declare module "../highcharts" {
         width?: number;
     }
 }
-export = factory;
+export default factory;

@@ -68,7 +68,7 @@ function uninstall(definitionPath, definitionPattern, highchartsPath) {
             );
             console.info(
                 'Modified',
-                path.relative(library.targetPath, copyPath)
+                path.relative(library.targetPath, packagePath)
             );
         }
     }
