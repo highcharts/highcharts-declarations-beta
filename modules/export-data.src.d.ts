@@ -8,6 +8,36 @@ import * as Highcharts from "../highcharts.src";
  */
 export function factory(highcharts: typeof Highcharts): void;
 declare module "../highcharts.src" {
+    interface AjaxSettings {
+        /**
+         * The payload to send.
+         */
+        data: object;
+        /**
+         * The data type expected.
+         */
+        dataType: ("json"|"octet"|"text"|"xml");
+        /**
+         * Function to call on error.
+         */
+        error: () => void;
+        /**
+         * The headers; keyed on header name.
+         */
+        headers: object;
+        /**
+         * Function to call on success.
+         */
+        success: () => void;
+        /**
+         * The verb to use.
+         */
+        type: ("delete"|"get"|"post"|"update");
+        /**
+         * The URL to call.
+         */
+        url: string;
+    }
     interface Chart {
         /**
          * Export-data module required. Returns the current chart data as a CSV
@@ -61,6 +91,13 @@ declare module "../highcharts.src" {
          */
         viewData(): void;
     }
+    /**
+     * Perform an Ajax call.
+     *
+     * @param attr
+     *        The Ajax settings to use.
+     */
+    function ajax(attr: AjaxSettings): void;
     /**
      * HTML encode some characters vulnerable for XSS.
      *
