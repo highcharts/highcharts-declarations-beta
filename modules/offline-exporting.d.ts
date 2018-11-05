@@ -23,24 +23,7 @@ declare module "../highcharts" {
          *        different background color can be added here, or `dataLabels`
          *        for export only.
          */
-        exportChartLocal(exportingOptions: OfflineExportingOptionsObject, chartOptions: Options): void;
-    }
-    /**
-     * Download options for offline exporting.
-     */
-    interface OfflineExportingOptionsObject extends ExportingOptionsObject {
-        /**
-         * URL pointing to location of dependency scripts to download on demand.
-         * By default, the module will load these file from our server. Internet
-         * Explorer requires the canvg library in order to export to PNG and to
-         * export charts with embedded images. PDF export also requires the
-         * jsPDF and svg2pdf for all browsers.
-         */
-        libURL?: string;
-        /**
-         * Scaling factor of downloaded image compared to source.
-         */
-        scale?: number;
+        exportChartLocal(exportingOptions: ExportingOptions, chartOptions: Options): void;
     }
     /**
      * Get data URL to an image of an SVG and call download on it options
@@ -62,6 +45,16 @@ declare module "../highcharts" {
      *
      *
      */
-    function downloadSVGLocal(svg: string, options: OfflineExportingOptionsObject, failCallback: () => void, successCallback: () => void): void;
+    function downloadSVGLocal(svg: string, options: ExportingOptions, failCallback: () => void, successCallback: () => void): void;
+    /**
+     * Download a data URL in the browser. Can also take a blob as first param.
+     *
+     * @param dataURL
+     *        The dataURL/Blob to download
+     *
+     * @param filename
+     *        The name of the resulting file (w/extension)
+     */
+    function downloadURL(dataURL: (object|string), filename: string): void;
 }
 export default factory;

@@ -99,6 +99,16 @@ declare module "../highcharts.src" {
      */
     function ajax(attr: AjaxSettings): void;
     /**
+     * Download a data URL in the browser. Can also take a blob as first param.
+     *
+     * @param dataURL
+     *        The dataURL/Blob to download
+     *
+     * @param filename
+     *        The name of the resulting file (w/extension)
+     */
+    function downloadURL(dataURL: (object|string), filename: string): void;
+    /**
      * HTML encode some characters vulnerable for XSS.
      *
      * @param html

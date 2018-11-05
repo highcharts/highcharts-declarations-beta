@@ -23,7 +23,7 @@ declare module "../highcharts" {
          *
          * @see https://api.highcharts.com/class-reference/Highcharts.Chart#exportChart
          */
-        exportChart(exportingOptions: ExportingOptionsObject, chartOptions: Options): void;
+        exportChart(exportingOptions: ExportingOptions, chartOptions: Options): void;
         /**
          * Return the unfiltered innerHTML of the chart container. Used as hook
          * for plugins. In styled mode, it also takes care of inlining CSS style
@@ -57,35 +57,6 @@ declare module "../highcharts" {
          * @fires Highcharts.Chart#afterPrint
          */
         print(): void;
-    }
-    /**
-     * Options for exporting tasks.
-     */
-    interface ExportingOptionsObject {
-        /**
-         * The file name for the export without extension.
-         */
-        filename?: string;
-        /**
-         * The pixel height of the source (in-page) chart.
-         */
-        sourceHeight?: number;
-        /**
-         * The pixel width of the source (in-page) chart.
-         */
-        sourceWidth?: number;
-        /**
-         * The MIME type of the converted image.
-         */
-        type?: string;
-        /**
-         * The URL for the server module to do the conversion.
-         */
-        url?: string;
-        /**
-         * The width of the PNG or JPG image generated on the server.
-         */
-        width?: number;
     }
 }
 export default factory;
