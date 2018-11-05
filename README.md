@@ -9,11 +9,15 @@ to the `any` type is necessary because of missing declarations.
 This beta version contains declarations for the following imports:
 
 - highcharts
+- highstock
 - highcharts/modules/accessibility
+- highcharts/modules/boost
+- highcharts/modules/broken-axis
 - highcharts/modules/export-data
 - highcharts/modules/exporting
 - highcharts/modules/offline-exporting
 - highcharts/modules/series-label
+- highcharts/modules/stock
 - highcharts/modules/vector
 
 
@@ -63,32 +67,52 @@ required. For example:
 import * as Highcharts from 'highcharts';
 // Module with declaration:
 import AccessibilityModule from 'highcharts/modules/accessibility';
-// Modules with any type:
-import BoostModule from 'highcharts/modules/boost';
-import StockModule from 'highcharts/modules/stock';
+// Module with any type:
+import MapModule from 'highcharts/modules/map';
 
-StockModule(Highcharts);
-BoostModule(Highcharts);
+MapModule(Highcharts);
 AccessibilityModule(Highcharts);
 
-(Highcharts as any).stockChart('container', {
+// Initiate the chart
+(Highcharts as any).mapChart('container', {
+
     chart: {
-        borderWidth: 1
+        map: 'countries/gb/gb-all'
     },
-    plotOptions: {
-        series: {
-            boostThreshold: 1
-        }
+
+    title: {
+        text: 'Highmaps basic lat/lon demo'
     },
-    rangeSelector: {
-        selected: 1
+
+    mapNavigation: {
+        enabled: true
     },
+
+    tooltip: {
+        headerFormat: '',
+        pointFormat: '<b>{point.name}</b><br>Lat: {point.lat}, Lon: {point.lon}'
+    },
+
     series: [{
-        type: 'line',
-        data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-        tooltip: {
-            valueDecimals: 2
-        }
-    } as Highcharts.SeriesLineOptions]
-} as Highcharts.Options);
+        name: 'Basemap',
+        borderColor: '#A0A0A0',
+        nullColor: 'rgba(200, 200, 200, 0.3)',
+        showInLegend: false
+    }, {
+        name: 'Separators',
+        type: 'mapline',
+        nullColor: '#707070',
+        showInLegend: false,
+        enableMouseTracking: false
+    }, {
+        type: 'mappoint',
+        name: 'Cities',
+        color: '#000',
+        data: [{
+            name: 'London',
+            lat: 51.507222,
+            lon: -0.1275
+        }]
+    }]
+});
 ```
