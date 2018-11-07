@@ -123,36 +123,6 @@ declare module "../highcharts" {
      */
     function swapXY(path: Array<(number|string)>, vertical: boolean): Array<(number|string)>;
     /**
-     * (Highstock) A candlestick chart is a style of financial chart used to
-     * describe price movements over time.
-     */
-    let candlestickOptions: PlotCandlestickOptions;
-    /**
-     * (Highstock) The scrollbar is a means of panning over the X axis of a
-     * stock chart. Scrollbars can also be applied to other types of axes.
-     *
-     * Another approach to scrollable charts is the chart.scrollablePlotArea
-     * option that is especially suitable for simpler cartesian charts on
-     * mobile.
-     *
-     * In styled mode, all the presentational options for the scrollbar are
-     * replaced by the classes `.highcharts-scrollbar-thumb`,
-     * `.highcharts-scrollbar-arrow`, `.highcharts-scrollbar-button`,
-     * `.highcharts-scrollbar-rifles` and `.highcharts-scrollbar-track`.
-     *
-     * @see https://api.highcharts.com/class-reference/Highcharts#.defaultScrollbarOptions
-     */
-    let defaultScrollbarOptions: ScrollbarOptions;
-    /**
-     * (Highstock) The approximate pixel width of each group. If for example a
-     * series with 30 points is displayed over a 600 pixel wide plot area, no
-     * grouping is performed. If however the series contains so many points that
-     * the spacing is less than the groupPixelWidth, Highcharts will try to
-     * group it into appropriate groups so that each is more or less two pixels
-     * wide. Defaults to `10`.
-     */
-    let seriesProto: number;
-    /**
      * Return the other axis based on either the axis option or on related
      * series.
      */
