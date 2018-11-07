@@ -22,6 +22,15 @@ This beta version contains declarations for the following imports:
 
 
 
+## Requirements
+
+You have to install Highcharts before installing the declarations, use the following command:
+```sh
+npm install highcharts@6.2
+```
+
+
+
 ## Install, update & uninstall
 
 - To install or update this package, use the following command:
