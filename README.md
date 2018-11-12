@@ -9,10 +9,13 @@ to the `any` type is necessary because of missing declarations.
 This beta version contains declarations for the following imports:
 
 - highcharts
+- highcharts-more
 - highstock
+- highcharts/indicators/*
 - highcharts/modules/accessibility
 - highcharts/modules/boost
 - highcharts/modules/broken-axis
+- highcharts/modules/data
 - highcharts/modules/export-data
 - highcharts/modules/exporting
 - highcharts/modules/offline-exporting
@@ -46,9 +49,9 @@ npm install highcharts@6.2
   ```
   **Note:** This will remove declaration files in the highcharts module.
 
-- To install a specific version (for example v0.2.0), use the following command:
+- To install a specific version (for example v0.4.0), use the following command:
   ```sh
-  npm install https://github.com/highcharts/highcharts-declarations-beta#v0.2.0
+  npm install https://github.com/highcharts/highcharts-declarations-beta#v0.4.0
   ```
 
 
