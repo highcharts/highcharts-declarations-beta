@@ -9,15 +9,20 @@ to the `any` type is necessary because of missing declarations.
 This beta version contains declarations for the following imports:
 
 - highcharts
-- highcharts-more
-- highstock
+- highcharts/highcharts-3d
+- highcharts/highcharts-more
+- highcharts/highmaps
+- highcharts/highstock
 - highcharts/indicators/*
 - highcharts/modules/accessibility
+- highcharts/modules/annotations
 - highcharts/modules/boost
 - highcharts/modules/broken-axis
 - highcharts/modules/data
+- highcharts/modules/draggable-points
 - highcharts/modules/export-data
 - highcharts/modules/exporting
+- highcharts/modules/map
 - highcharts/modules/offline-exporting
 - highcharts/modules/series-label
 - highcharts/modules/stock
@@ -49,9 +54,9 @@ npm install highcharts@6.2
   ```
   **Note:** This will remove declaration files in the highcharts module.
 
-- To install a specific version (for example v0.4.0), use the following command:
+- To install a specific version (for example v0.6.0), use the following command:
   ```sh
-  npm install https://github.com/highcharts/highcharts-declarations-beta#v0.4.0
+  npm install https://github.com/highcharts/highcharts-declarations-beta#v0.6.0
   ```
 
 
@@ -80,51 +85,18 @@ import * as Highcharts from 'highcharts';
 // Module with declaration:
 import AccessibilityModule from 'highcharts/modules/accessibility';
 // Module with any type:
-import MapModule from 'highcharts/modules/map';
+import GanttModule from 'highcharts/modules/gantt';
 
-MapModule(Highcharts);
+GanttModule(Highcharts);
 AccessibilityModule(Highcharts);
 
 // Initiate the chart
-(Highcharts as any).mapChart('container', {
-
-    chart: {
-        map: 'countries/gb/gb-all'
-    },
-
-    title: {
-        text: 'Highmaps basic lat/lon demo'
-    },
-
-    mapNavigation: {
-        enabled: true
-    },
-
-    tooltip: {
-        headerFormat: '',
-        pointFormat: '<b>{point.name}</b><br>Lat: {point.lat}, Lon: {point.lon}'
-    },
+(Highcharts as any).ganttChart('container', {
 
     series: [{
-        name: 'Basemap',
-        borderColor: '#A0A0A0',
-        nullColor: 'rgba(200, 200, 200, 0.3)',
-        showInLegend: false
-    }, {
-        name: 'Separators',
-        type: 'mapline',
-        nullColor: '#707070',
-        showInLegend: false,
-        enableMouseTracking: false
-    }, {
-        type: 'mappoint',
-        name: 'Cities',
-        color: '#000',
-        data: [{
-            name: 'London',
-            lat: 51.507222,
-            lon: -0.1275
-        }]
+        type: 'gantt',
+        data: [1, 2, 3, 4, 5]
     }]
+
 });
 ```
