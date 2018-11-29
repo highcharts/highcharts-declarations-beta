@@ -14,19 +14,7 @@ This beta version contains declarations for the following imports:
 - highcharts/highmaps
 - highcharts/highstock
 - highcharts/indicators/*
-- highcharts/modules/accessibility
-- highcharts/modules/annotations
-- highcharts/modules/boost
-- highcharts/modules/broken-axis
-- highcharts/modules/data
-- highcharts/modules/draggable-points
-- highcharts/modules/export-data
-- highcharts/modules/exporting
-- highcharts/modules/map
-- highcharts/modules/offline-exporting
-- highcharts/modules/series-label
-- highcharts/modules/stock
-- highcharts/modules/vector
+- highcharts/modules/*
 
 
 
@@ -54,9 +42,9 @@ npm install highcharts@6.2
   ```
   **Note:** This will remove declaration files in the highcharts module.
 
-- To install a specific version (for example v0.6.0), use the following command:
+- To install a specific version (for example v0.7.0), use the following command:
   ```sh
-  npm install https://github.com/highcharts/highcharts-declarations-beta#v0.6.0
+  npm install https://github.com/highcharts/highcharts-declarations-beta#v0.7.0
   ```
 
 
@@ -85,16 +73,16 @@ import * as Highcharts from 'highcharts';
 // Module with declaration:
 import AccessibilityModule from 'highcharts/modules/accessibility';
 // Module with any type:
-import GanttModule from 'highcharts/modules/gantt';
+import NewModule from 'highcharts/modules/new';
 
-GanttModule(Highcharts);
+NewModule(Highcharts);
 AccessibilityModule(Highcharts);
 
 // Initiate the chart
-(Highcharts as any).ganttChart('container', {
+(Highcharts as any).newChart('container', {
 
     series: [{
-        type: 'gantt',
+        type: 'new',
         data: [1, 2, 3, 4, 5]
     }]
 
