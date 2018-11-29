@@ -46,15 +46,5 @@ declare module "../highcharts" {
      *
      */
     function downloadSVGLocal(svg: string, options: ExportingOptions, failCallback: () => void, successCallback: () => void): void;
-    /**
-     * Download a data URL in the browser. Can also take a blob as first param.
-     *
-     * @param dataURL
-     *        The dataURL/Blob to download
-     *
-     * @param filename
-     *        The name of the resulting file (w/extension)
-     */
-    function downloadURL(dataURL: (object|string), filename: string): void;
 }
 export default factory;
