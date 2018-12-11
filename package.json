@@ -1,6 +1,6 @@
 {
   "name": "highcharts-declarations-beta",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "TypeScript Declarations (Beta) for Highcharts v6",
   "main": "highcharts.d.ts",
   "scripts": {
@@ -21,7 +21,7 @@
     "url": "https://github.com/highcharts/highcharts-declarations-beta/issues"
   },
   "homepage": "https://github.com/highcharts/highcharts-declarations-beta#readme",
-  "dependencies": {
+  "peerDependencies": {
     "highcharts": "^6.2.0"
   }
 }
