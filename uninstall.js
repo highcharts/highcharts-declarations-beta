@@ -11,18 +11,14 @@ function uninstall(definitionPath, definitionPattern, highchartsPath) {
 
         const packagePath = path.join(highchartsPath, 'package.json');
         if (!fs.existsSync(packagePath)) {
-            throw new Error(
-                'Highcharts v6 not found.'
-            );
+            return;
         }
 
         const packageJSON = JSON.parse(fs.readFileSync(packagePath));
         if (!packageJSON.version ||
             !packageJSON.version.startsWith('6.')
         ) {
-            throw new Error(
-                'Highcharts Declarations (Beta) requires Highcharts v6.'
-            );
+            return;
         }
 
         console.info(
